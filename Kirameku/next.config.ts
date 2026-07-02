@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   compress: true,
 
+  // 静态站点不支持rewrites代理后端接口，必须注释
   /*
   async rewrites() {
     return [
