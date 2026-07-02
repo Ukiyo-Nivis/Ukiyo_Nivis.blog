@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   compress: true,
 
+  /*
   async rewrites() {
     return [
       {
@@ -21,6 +22,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  */
 
   experimental: {
     optimizePackageImports: [
@@ -31,7 +33,6 @@ const nextConfig: NextConfig = {
       "@dnd-kit/utilities",
     ],
   },
-
   images: {
     formats: ["image/avif", "image/webp"],
   },
