@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export",
+  trailingSlash: true,
   compress: true,
 
   async rewrites() {
@@ -32,13 +34,6 @@ const nextConfig: NextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      { protocol: "https", hostname: "static.hiromu.top" },
-      { protocol: "https", hostname: "hiromu520.oss-cn-beijing.aliyuncs.com" },
-      { protocol: "https", hostname: "picsum.photos" },
-      { protocol: "https", hostname: "avatars.githubusercontent.com" },
-      { protocol: "http", hostname: "wfqqreader-1252317822.image.myqcloud.com" },
-    ],
   },
 };
 
