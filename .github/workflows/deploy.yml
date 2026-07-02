@@ -2,29 +2,28 @@ name: Build Next Blog To Pages
 on:
   push:
     branches: [ main ]
+
 jobs:
   build-job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
-          cache-dependency-path: "Kirameku/package-lock.json"
 
-      - name: Build static site
+      - name: Install & Build
         working-directory: ./Kirameku
         run: |
-          npm i
+          npm install
           npm run build
 
-      - name: Upload static files
+      - name: Upload static out folder
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./Kirameku/out
+          path: Kirameku/out
 
   deploy-job:
     needs: build-job
@@ -32,10 +31,6 @@ jobs:
     permissions:
       pages: write
       id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+    environment: github-pages
     steps:
-      - name: Deploy to GitHub Pages
-        id: deploy
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
