@@ -18,7 +18,7 @@ jobs:
       - name: Build static site
         working-directory: ./Kirameku
         run: |
-          npm ci
+          npm i
           npm run build
 
       - name: Upload static files
